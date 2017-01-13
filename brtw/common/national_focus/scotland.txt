@@ -1,0 +1,825 @@
+focus_tree = {
+	id = scottish_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = SCO
+		}
+	}
+	
+	default = no
+
+focus = {
+		id = scottish_freedom
+		icon = GFX_goal_generic_demand_territory
+		x = 4
+		y = 0
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 150
+		}
+	}
+focus = {
+		id = scottish_civ_factory_1
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = scottish_freedom }
+		x = 0
+		y = 1
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		
+		ai_will_do = {
+			factor = 2
+		}
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+focus = {
+		id = scottish_civ_factory_2
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = scottish_civ_factory_1 }
+		x = 0
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+
+focus = {
+		id = scottish_oil
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = scottish_civ_factory_2 }
+		available = {
+			controls_state = 120
+		}
+		x = 1
+		y = 3
+		cost = 10
+		completion_reward = {
+			add_resource = {
+				type = oil
+				amount = 7
+				state = 120
+			}
+		}
+	}
+	focus = {
+		id = scottish_oil_refinery
+		icon = GFX_goal_generic_oil_refinery
+		prerequisite = { focus = scottish_oil }
+		x = 1
+		y = 5
+		cost = 10
+		completion_reward = {
+			add_tech_bonus = {
+				name = synth_bonus
+				bonus = 0.33
+				uses = 2
+				category = synth_resources
+			}
+		}
+	}
+	
+####Political
+focus = {
+		id = scottish_democratic
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = scottish_freedom }
+		mutually_exclusive = { focus = scottish_authoritarian }
+		x = 5
+		y = 1
+		cost = 10
+		
+		ai_will_do = {
+			factor = 1
+		}	
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+			custom_effect_tooltip = scottish_democratic_tt
+		}
+	}
+focus = {
+		id = scottish_authoritarian
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = scottish_freedom }
+		mutually_exclusive = { focus = scottish_democratic }
+		x = 7
+		y = 1
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 50
+			add_ideas = scottish_militarism
+		}
+	}
+focus = {
+		id = scottish_democratic_politicians
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = scottish_democratic }
+		x = 3
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 50
+custom_effect_tooltip = scottish_democratic_politicians_tt
+		}
+}
+focus = {
+		id = scottish_british_alliance
+		icon = GFX_goal_support_democracy
+		prerequisite = { focus = scottish_democratic }
+		mutually_exclusive = { focus = scottish_alliance }
+		x = 4
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			ENG = { country_event = { id = britain.913 } }
+		}
+}
+focus = {
+		id = scottish_british_weapons
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = scottish_british_alliance }
+		x = 4
+		y = 5
+		cost = 10
+		available = {
+			is_in_faction_with = ENG
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		custom_effect_tooltip = scottish_weapons_tt
+			add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 4000 producer = SCO }
+		}
+}
+focus = {
+		id = scottish_alliance
+		icon = GFX_goal_generic_alliance
+		available = {
+			is_puppet = no
+			is_in_faction = no
+		}
+		
+		ai_will_do = {
+			factor = 1
+		}	
+		
+	 	prerequisite = { focus = scottish_democratic }
+	 	mutually_exclusive = { focus = scottish_british_alliance }
+	 	bypass = {
+	 		is_in_faction_with = IRE
+	 		is_faction_leader = yes
+	 	}
+		x = 6
+		y = 3
+		cost = 10
+
+		ai_will_do = {
+			factor = 0.25
+
+			modifier = {
+				factor = 10
+				ai_irrationality > 20
+			}
+			modifier = {
+				factor = 2
+				ai_irrationality > 30
+			}
+		}
+		completion_reward = {
+			add_national_unity = 0.05
+			set_rule = { can_create_factions = yes }
+			create_faction = "celtic_cooperation"
+			if = {
+				limit = {
+					IRE = { 
+						is_puppet = no
+						NOT = { has_war_with = SCO }
+					}
+				}
+				IRE = { country_event = scotland.3 }
+				hidden_effect = {
+					news_event = { hours = 6 id = news.1177 }
+				}
+			}
+		}
+	}
+focus = {
+		id = scottish_irish_weapons
+		icon = GFX_goal_generic_military_deal
+		prerequisite = { focus = scottish_alliance }
+		x = 6
+		y = 5
+		cost = 10
+		available = {
+			is_in_faction_with = IRE
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		custom_effect_tooltip = scottish_weapons_tt
+			add_equipment_to_stockpile = { type = infantry_equipment_0 amount = 800 producer = SCO }
+		}
+}
+focus = {
+		id = scottish_fascist
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = scottish_authoritarian }
+		mutually_exclusive = { focus = scottish_communist }
+		x = 10
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_political_power = 25
+		custom_effect_tooltip = scottish_fascist_tt
+		}
+	}
+focus = {
+		id = scottish_communist
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = scottish_authoritarian }
+		mutually_exclusive = { focus = scottish_fascist }
+		x = 8
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_political_power = 25
+		custom_effect_tooltip = scottish_communist_tt
+		}
+	}
+focus = {
+		id = scottish_north_england
+		icon = GFX_goal_generic_forceful_treaty
+		prerequisite = { focus = scottish_fascist }
+		x = 12
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			131 = { add_claim_by = SCO }
+			#Replace with correct threat
+			add_named_threat = { threat = 0 name = scotland_demands_north_england }
+			if = {
+				limit = {
+					ENG = { 
+						owns_state = 131
+						controls_state = 131
+					}
+				}
+				ENG = {
+					country_event = { id = britain.906 }
+				}
+			}
+		}
+}
+focus = {
+		id = scottish_roads
+		prerequisite = { focus = scottish_fascist
+			focus = scottish_democratic
+		}
+		icon = GFX_goal_generic_construct_infrastructure
+		x = 5
+		y = 4
+		cost = 10
+		ai_will_do = {
+			factor = 12
+		}
+		
+		completion_reward = {
+			custom_effect_tooltip = scottish_roads_tt
+			hidden_effect = {
+				120 = {
+					if = {
+						add_building_construction = {
+							type = infrastructure
+							level = 7
+							instant_build = yes
+						}
+					}
+				}
+				121 = {
+					if = {
+						add_building_construction = {
+							type = infrastructure
+							level = 8
+							instant_build = yes
+						}
+					}
+				}
+				133 = {
+					if = {
+						add_building_construction = {
+							type = infrastructure
+							level = 8
+							instant_build = yes
+						}
+					}
+				}
+				136 = {
+					if = {
+						add_building_construction = {
+							type = infrastructure
+							level = 8
+							instant_build = yes
+						}
+					}
+				}
+			}		
+		}
+	}
+
+	focus = {
+		id = scottish_minimum_wage
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = scottish_communist }
+		x = 8
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_political_power = 100
+		add_national_unity = 0.1
+		}
+	}
+	
+	focus = {
+		id = scottish_ulster_issue
+		icon = GFX_goal_generic_improve_relations
+		prerequisite = { focus = scottish_minimum_wage
+		focus = scottish_alliance}
+		x = 7
+		y = 4
+		cost = 10
+		bypass = {
+	 		NOT = { ENG = { controls_state = 119 } }
+	 	}
+		
+		available = {
+			AND = {
+				OR = {
+					AND ={
+						OR = {
+							NOT = {
+								SCO = {has_government = communism}
+								SCO = {has_government = fascism}
+							}
+						}
+						IRE = {is_in_faction_with = SCO}
+						NOT{
+							SCO = {has_war_with = ENG}
+							IRE = {has_war_with = ENG}
+						}
+					}
+					NOT = {
+						IRE = {has_war_with = ENG}
+						ENG = {has_government = communism}
+					}
+				}
+				ENG = { controls_state = 119 }
+			}
+		}
+		
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = -150
+			country_event = { id = britain.1001 }
+		}
+	}
+	
+### Naval
+focus = {
+		id = scottish_dockyards
+		icon = GFX_goal_generic_construct_naval_dockyard 
+		x = 15
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = naval_effort_tt
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+			}
+		}
+
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = SCO_dockyards }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SCO_dockyards
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = SCO_dockyards
+			}
+		}
+	}
+	
+focus = {
+		id = scottish_naval_troops
+		prerequisite = { focus = scottish_dockyards }
+		icon = GFX_goal_generic_amphibious_assault
+		x = 14
+		y = 1
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes	
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = uk_amphibious_focus
+				bonus = 0.25
+				uses = 1
+				category = marine_tech
+			}
+			add_tech_bonus = {
+				name = uk_amphibious_focus
+				bonus = 0.15
+				uses = 1
+				category = tp_tech
+			}
+		}
+	}
+focus = {
+		id = scottish_naval_doct1
+		prerequisite = { focus = scottish_dockyards }
+		icon = GFX_goal_generic_navy_doctrines_tactics
+		x = 16
+		y = 1
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = naval_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = naval_doctrine
+			}
+		}
+	}
+focus = {
+		id = scottish_destroyer
+		prerequisite = { 
+			focus = scottish_naval_doct1
+			focus = scottish_naval_troops
+		}
+		icon = GFX_goal_generic_navy_cruiser
+		x = 15
+		y = 2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.25
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = uk_battleship_focus
+				bonus = 0.25
+				uses = 1
+				category = bb_tech
+			}
+		}
+	}
+	
+#### Army
+focus = {
+		id = scottish_military_factories
+		icon = GFX_goal_generic_construct_mil_factory
+		x = 20
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		continue_if_invalid = yes
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = production_effort_tt
+				NOT = {
+					any_owned_state = {
+						is_in_home_area = yes
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = royal_ordinance_focus_2AF }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+		}
+	}
+	
+##Air
+	
+}
+

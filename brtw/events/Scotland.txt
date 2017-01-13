@@ -1,0 +1,135 @@
+﻿add_namespace = scotland
+
+# Britain accepts Ally request
+country_event = {
+	id = scotland.1
+	title = scotland.1.t
+	desc = scotland.1.d
+	picture = GFX_news_event_scotland_england
+
+	is_triggered_only	= yes
+
+	option = {
+		name = scotland.1.a
+	}
+}
+
+# Britain denies Ally request
+country_event = {
+	id = scotland.2
+	title = scotland.2.t
+	desc = scotland.2.d
+	picture = GFX_news_event_scotland_england
+
+	is_triggered_only	= yes
+
+	option = {
+		name = scotland.2.a
+	}
+}
+
+# Invitation to Celtic Cooperation
+country_event = {
+	id = scotland.3
+	title = scotland.3.t
+	desc = scotland.3.d
+	picture = GFX_report_event_scotland
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = scotland.3.a
+		ai_chance = { factor = 75 }
+		SCO = {
+			country_event = scotland.4
+			add_to_faction = ROOT
+		}
+		add_ai_strategy = {
+			type = alliance
+			id = "SCO"
+			value = 200
+		}
+	}
+
+	option = {
+		name = scotland.3.b
+		ai_chance = { factor = 25 }
+		SCO = { country_event = scotland.5 }
+	}
+}
+
+# [Country] Accepts
+country_event = {
+	id = scotland.4
+	title = scotland.4.t
+	desc = scotland.4.d
+	picture = GFX_report_event_scotland
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = scotland.4.a
+		effect_tooltip = {
+			add_to_faction = FROM
+		}
+	}
+}
+
+# [Country] Refuses
+country_event = {
+	id = scotland.5
+	title = scotland.5.t
+	desc = scotland.5.d
+	picture = GFX_report_event_scotland
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = scotland.5.a
+	}
+}
+
+
+# England Cedes Land
+country_event = {
+	id = scotland.6
+	title = scotland.6.t
+	desc = scotland.6.d
+	picture = GFX_report_event_vienna_award_hungary
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = scotland.6.a
+		SCO = { 
+			transfer_state = 131
+		}
+		hidden_effect = {
+			country_event = { days = 1 id = news.19 }
+		}
+	}
+}
+
+# England Refuses
+country_event = {
+	id = scotland.7
+	title = scotland.7.t
+	desc = scotland.7.d
+	picture = GFX_report_event_lithuania_army
+
+	is_triggered_only = yes
+	
+	option = {
+		name = scotland.7.a
+		create_wargoal = {
+			type = take_state_focus
+			target = ENG
+			generator = { 131 }
+		}
+		hidden_effect = {
+			country_event = { days = 1 id = news.20 }
+		}
+	}
+}
