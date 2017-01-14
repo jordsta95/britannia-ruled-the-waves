@@ -10962,3 +10962,44 @@ news_event = {
 		}
 	}
 }
+
+#England Appears
+news_event = {
+	id = news.1178
+	title = news.1178.t
+	desc = news.1178.d
+	picture = GFX_news_event_scotland
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#England Response
+	option = {
+		name = news.1178.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	#Scotland response
+	option = {
+		name = news.1178.b
+		trigger = {
+			tag = SCO
+			tag = IRE
+		}
+	}
+
+	#Global Response
+	option = {
+		name = news.1178.c
+		trigger = {
+			NOT = {
+				tag = SCO
+				tag = ENG
+				tag = IRE
+			}
+		}
+	}
+}

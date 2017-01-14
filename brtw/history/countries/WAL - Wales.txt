@@ -1,4 +1,4 @@
-﻿capital = 121
+﻿capital = 122
 
 set_research_slots = 3
 
@@ -16,11 +16,9 @@ set_technology = {
 
 1939.1.1 = {
 
-
 	add_political_power = 1198
 	
-	#generic focuses
-	
+
 	#oob = "LUX_1939"
 	set_technology = {
 		tech_recon = 1
@@ -79,3 +77,6 @@ set_politics = {
 	election_frequency = 36
 	elections_allowed = yes
 }
+
+
+

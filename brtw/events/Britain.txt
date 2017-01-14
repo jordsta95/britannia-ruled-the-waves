@@ -928,13 +928,20 @@ country_event = {
 	desc = britain.1000.d
 	picture = GFX_report_event_fascist_gathering
 
-	is_triggered_only	= yes
-
+	fire_only_once = yes
 	
 	trigger = {
-		NOT = { has_government = democracy }
+		NOT = { has_government = democratic }
 		tag = ENG
+		AND = {
+			ENG = { controls_state = 120 }
+            ENG = { controls_state = 121 }
+            ENG = { controls_state = 133 }
+            ENG = { controls_state = 136 }
+		}
 	}
+	
+	mean_time_to_happen = { days = 0.1 }
 
 	option = {
 	name = britain.1000.a
@@ -1035,4 +1042,39 @@ country_event = {
 			country_event = { days = 1 id = news.20 }
 		}
 	}
+}
+
+country_event = {
+	id = britain.1003
+	title = britain.1003.t
+	desc = britain.1003.d
+	picture = GFX_report_event_fascist_gathering
+
+	fire_only_once = yes
+	
+	trigger = {
+		tag = ENG
+		AND = {
+			NOT = {
+			#Scottish States
+				ENG = { controls_state = 120 }
+				ENG = { controls_state = 121 }
+				ENG = { controls_state = 133 }
+				ENG = { controls_state = 136 }
+			#Northern Ireland
+				ENG = { controls_state = 119 }
+			}
+		}
+	}
+	
+	mean_time_to_happen = { days = 0.1 }
+
+	option = {
+	name = britain.1003.a
+		
+		hidden_effect = {
+			set_cosmetic_tag = NUK
+			country_event = { days = 1 id = news.1178 }
+		}
+	} 
 }

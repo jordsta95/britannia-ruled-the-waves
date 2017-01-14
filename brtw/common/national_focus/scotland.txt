@@ -23,6 +23,50 @@ focus = {
 
 		completion_reward = {
 			add_political_power = 150
+			add_ideas = scottish_breakout
+		}
+	}
+	
+focus = {
+		id = scottish_wales
+		icon = GFX_goal_generic_demand_territory
+		x = 6
+		y = 0
+		cost = 10
+		available{
+			ENG = { controls_state = 122 }
+			NOT = {
+				#Scottish States
+				ENG = { controls_state = 120 }
+				ENG = { controls_state = 121 }
+				ENG = { controls_state = 133 }
+				ENG = { controls_state = 136 }
+				#Northern Ireland
+				ENG = { controls_state = 119 }
+			}
+		}
+		bypass{
+			country_exists = WAL
+		}
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = -500
+			ENG = {
+				release = WAL
+				if = {
+					limit = { has_dlc = "Together for Victory" }
+						set_autonomy = {
+							target = WAL
+							autonomous_state = autonomy_integrated_puppet
+							freedom_level = 0.5
+						}
+					}
+				if = {
+					limit = { NOT = { has_dlc = "Together for Victory" } }
+					puppet = WAL
+				}
+			}
 		}
 	}
 focus = {
@@ -204,6 +248,16 @@ focus = {
 		icon = GFX_goal_support_democracy
 		prerequisite = { focus = scottish_freedom }
 		mutually_exclusive = { focus = scottish_authoritarian }
+		available = {
+			AND = {
+				NOT = { 
+					has_war_together_with = ENG 
+					is_subject_of = ENG
+					is_in_faction_with = ENG
+					country_exists = ENG
+				}
+			}
+		}
 		x = 5
 		y = 1
 		cost = 10
@@ -224,6 +278,15 @@ focus = {
 		icon = GFX_goal_generic_dangerous_deal
 		prerequisite = { focus = scottish_freedom }
 		mutually_exclusive = { focus = scottish_democratic }
+		available = {
+			AND = {
+				NOT = { 
+					has_war_together_with = ENG 
+					is_subject_of = ENG
+					is_in_faction_with = ENG
+				}
+			}
+		}
 		x = 7
 		y = 1
 		cost = 10

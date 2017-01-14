@@ -20,6 +20,20 @@ ideas = {
 				conscription = 0.01
 			}
 		}
+		scottish_breakout = {
+			allowed = {
+				always = no
+			}
+			
+			removal_cost = -1
+
+			picture = ast_abandon_the_westminster_system
+
+			modifier = {
+				autonomy_gain = 0.75
+			}
+
+		}
 	}
 
 	political_advisor = {
