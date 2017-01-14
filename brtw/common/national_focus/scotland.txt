@@ -476,6 +476,21 @@ focus = {
 		}
 }
 focus = {
+		id = scottish_nationalists
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = scottish_fascist }
+		x = 10
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = scottish_nationalists
+		}
+	}
+	
+focus = {
 		id = scottish_roads
 		prerequisite = { focus = scottish_fascist
 			focus = scottish_democratic
@@ -544,6 +559,23 @@ focus = {
 		completion_reward = {
 		add_political_power = 100
 		add_national_unity = 0.1
+		}
+	}
+	focus = {
+		id = scottish_faction
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { 
+		focus = scottish_nationalists 
+		focus = scottish_minimum_wage 
+		}
+		x = 9
+		y = 5
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			set_rule = { can_create_factions = yes }
 		}
 	}
 	
@@ -752,6 +784,89 @@ focus = {
 			}
 		}
 	}
+	focus = {
+		id = scottish_capital_ship
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = scottish_destroyer }
+		mutually_exclusive = { focus = scottish_cruiser }
+		x = 14
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 25
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = basic_battlecruiser
+				technology = basic_battleship
+				technology = improved_battleship
+				technology = advanced_battleship
+				technology = heavy_battleship
+				technology = heavy_battleship2
+				technology = early_carrier
+				technology = basic_carrier
+				technology = improved_carrier
+				technology = advanced_carrier
+			}
+		}
+	}
+	focus = {
+		id = scottish_cruiser
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = scottish_destroyer }
+		mutually_exclusive = { focus = scottish_capital_ship }
+		x = 16
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = improved_light_cruiser
+				technology = advanced_light_cruiser
+				technology = improved_heavy_cruiser
+				technology = advanced_heavy_cruiser
+			}
+		}
+	}
 	
 #### Army
 focus = {
@@ -881,8 +996,211 @@ focus = {
 			}
 		}
 	}
+	focus = {
+		id = scottish_army_effort
+		icon = GFX_goal_generic_allies_build_infantry
+		x = 19
+		y = 1
+		cost = 10
+		prerequisite = { focus = scottish_military_factories }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.5
+				uses = 1
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = scottish_equipment_effort
+		icon = GFX_goal_generic_small_arms
+		prerequisite = { focus = army_effort }
+		x = 19
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = infantry_weapons_bonus
+				bonus = 0.25
+				uses = 2
+				category = infantry_weapons
+				category = artillery
+			}
+		}
+	}
+	focus = {
+		id = scottish_army_effort2
+		icon = GFX_goal_generic_army_doctrines
+		x = 18
+		y = 3
+		cost = 10
+		prerequisite = { focus = scottish_equipment_effort }
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			army_experience = 5
+			add_tech_bonus = {
+				name = land_doc_bonus
+				bonus = 0.25
+				uses = 2
+				category = land_doctrine
+			}
+		}
+	}
+	focus = {
+		id = scottish_motorization_effort
+		icon = GFX_goal_generic_army_motorized
+		prerequisite = { focus = scottish_equipment_effort }
+		bypass = { has_tech = motorised_infantry }
+		x = 20
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = motorized_bonus
+				bonus = 0.75
+				technology = motorised_infantry
+			}
+		}
+	}
+	focus = {
+		id = scottish_special_forces
+		icon = GFX_goal_generic_special_forces
+		prerequisite = { focus = scottish_motorization_effort}
+		prerequisite = { focus = scottish_army_effort2 }
+		x = 19
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = special_forces_bonus
+				bonus = 0.5
+				uses = 1
+				technology = paratroopers
+				technology = paratroopers2
+				technology = marines
+				technology = marines2
+				technology = tech_mountaineers
+				technology = tech_mountaineers2
+			}
+		}
+	}
 	
 ##Air
-	
+	focus = {
+		id = scottish_air_start
+		icon = GFX_goal_generic_air_doctrine
+		x = 23
+		y = 0
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = air_focus_bypass_tt
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+			}
+		}
+
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = air_rearmament_focus_2AirBase }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}		
+			}
+		}
+
+		completion_reward = {
+			air_experience = 30
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = air_rearmament_focus_2AirBase
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}			
+				set_state_flag = air_rearmament_focus_2AirBase
+			}
+		}
+	}
+	focus = {
+		id = scottish_fighters
+		prerequisite = { focus = scottish_air_start }
+		prerequisite = { focus = scottish_military_factories }
+		icon = GFX_goal_generic_air_fighter
+		x = 22
+		y = 1
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = fighter_command_focus
+				bonus = 0.33
+				uses = 3
+				category = light_fighter
+			}
+		}
+	}
+	##end
 }
 

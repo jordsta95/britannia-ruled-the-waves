@@ -859,7 +859,7 @@ country_event = {
 			}
 		}
 		SCO = {
-			country_event = { days = 1 id = scotland.22 }
+			country_event = { days = 1 id = scotland.6 }
 		}
 	}
 	option = { # Refuse
@@ -911,12 +911,12 @@ country_event = {
 				target = ENG
 				generator = { 131 }
 				}
-				country_event = { days = 1 id = scotland.23 }
+				country_event = { days = 1 id = scotland.7 }
 			}
 		}
 		hidden_effect = {
 			SCO = {
-				country_event = { days = 1 id = scotland.23 }
+				country_event = { days = 1 id = scotland.7 }
 			}
 		}		
 	}
@@ -1039,7 +1039,7 @@ country_event = {
 			generator = { 119 }
 		}
 		hidden_effect = {
-			country_event = { days = 1 id = news.20 }
+			country_event = { days = 1 id = news.1020 }
 		}
 	}
 }
@@ -1077,4 +1077,184 @@ country_event = {
 			country_event = { days = 1 id = news.1178 }
 		}
 	} 
+}
+
+country_event = {
+	id = britain.1004
+	title = britain.1004.t
+	desc = britain.1004.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+	name = britain.1004.a
+	ai_chance = { factor = 25 }
+		ENG = {
+			set_autonomy = {
+				target = USA
+				autonomous_state = autonomy_dominion
+				freedom_level = 0.5
+			}
+		}
+		country_event = { days = 1 id = news.1179 }
+	}
+	option = {
+	name = britain.1004.b
+	ai_chance = { factor = 75 }
+	country_event = { days = 1 id = news.1180 }
+	}
+	
+}
+
+# ENG claim North Malaya
+country_event = {
+	id = britain.907
+	title = britain.907.t
+	desc = britain.907.d
+	picture = GFX_report_event_generic_read_write
+	
+	is_triggered_only = yes
+	
+	option = { # Accept demands
+		name = britain.907.a
+		ai_chance = { 
+			factor = 40
+			modifier = {
+				factor = 0
+				NOT = {
+					OR = {
+						is_puppet_of = ENG
+						is_in_faction_with = ENG
+					}
+				}
+				ENG = {
+					surrender_progress > 0.01
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					is_in_faction_with = ROOT
+					has_war_with = ENG
+				}
+			}
+			modifier = {
+				factor = 0
+				any_other_country = {
+					NOT = {
+						tag = ENG
+					}
+					SIA = {
+						is_puppet_of = PREV
+					}
+					NOT = {
+						is_in_faction_with = ENG
+					}
+				}
+			}
+		}
+		ENG = {
+			country_event = { days = 1 id = scotland.22 }
+		}
+	}
+	option = { # Refuse
+		name = britain.907.b		
+		ai_chance = { 
+			factor = 60
+			modifier = {
+				factor = 0
+				is_historical_focus_on = yes
+				NOT = {
+					ENG = {
+						surrender_progress > 0.09
+					}
+				}
+				NOT = {
+					any_other_country = {
+						is_in_faction_with = ROOT
+						has_war_with = ENG
+					}
+				}
+				NOT = {
+					any_other_country = {
+						NOT = {
+							tag = ENG
+						}
+						SIA = {
+							is_puppet_of = ENG
+						}
+						NOT = {
+							is_in_faction_with = ENG
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 0
+				OR = {
+					is_in_faction_with = ENG
+					SIA = {
+						is_puppet_of = ENG
+					}
+				}
+			}
+		}
+		effect_tooltip = {
+			ENG = {
+				create_wargoal = {
+				type = take_state_focus
+				target = SIA
+				generator = { 724 }
+				}
+				country_event = { days = 1 id = scotland.23 }
+			}
+		}
+		hidden_effect = {
+			ENG = {
+				country_event = { days = 1 id = scotland.23 }
+			}
+		}		
+	}
+}
+# England Cedes Land
+country_event = {
+	id = britain.1026
+	title = britain.1026.t
+	desc = britain.1026.d
+	picture = GFX_report_event_vienna_award_hungary
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.1026.a
+		SCO = { 
+			transfer_state = 131
+		}
+		hidden_effect = {
+			country_event = { days = 1 id = news.1019 }
+		}
+	}
+}
+
+# England Refuses
+country_event = {
+	id = britain.1027
+	title = britain.1027.t
+	desc = britain.1027.d
+	picture = GFX_report_event_lithuania_army
+
+	is_triggered_only = yes
+	
+	option = {
+		name = britain.1027.a
+		create_wargoal = {
+			type = take_state_focus
+			target = ENG
+			generator = { 131 }
+		}
+		hidden_effect = {
+			country_event = { days = 1 id = news.1020 }
+		}
+	}
 }

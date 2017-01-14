@@ -20,6 +20,25 @@ ideas = {
 				conscription = 0.01
 			}
 		}
+		scottish_nationalists = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+	
+			modifier = {
+				conscription = 0.01
+			}
+		}
 		scottish_breakout = {
 			allowed = {
 				always = no
@@ -38,50 +57,7 @@ ideas = {
 
 	political_advisor = {
 	
-		SCO_scott_andrews = {
-			
-			picture = generic_political_advisor_europe_3
-			
-			allowed = {
-				original_tag = "SCO"
-			}			
-			available = {
-				has_completed_focus = scottish_democratic_politicians
-			}
-			
-			traits = { democratic_reformer }
 		
-		}
-		
-		SCO_andy_macdonald = {
-			
-			picture = generic_political_advisor_europe_1
-			
-			allowed = {
-				original_tag = "SCO"
-			}			
-			available = {
-				has_completed_focus = scottish_fascist
-			}
-			
-			traits = { fascist_demagogue }
-		
-		}
-		
-		SCO_john_williams = {
-			
-			picture = generic_political_advisor_europe_2
-			
-			allowed = {
-				original_tag = "SCO"
-			}			
-			available = {
-				has_completed_focus = scottish_communist
-			}
-			
-			traits = { communist_revolutionary }
-		
-		}
 		
 		
 
@@ -132,6 +108,82 @@ ideas = {
 			
 			traits = { captain_of_industry }
 		}
+		
+		SCO_scott_andrews = {
+			
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = "SCO"
+			}			
+			available = {
+				has_completed_focus = scottish_democratic_politicians
+			}
+			
+			traits = { democratic_reformer }
+			
+			on_add = {
+				country_event = political.13
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+		
+		}
+		
+		SCO_andy_macdonald = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = "SCO"
+			}			
+			available = {
+				has_completed_focus = scottish_fascist
+			}
+			
+			traits = { fascist_demagogue }
+			
+			on_add = {
+				country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		
+		}
+		
+		SCO_john_williams = {
+			
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = "SCO"
+			}			
+			available = {
+				has_completed_focus = scottish_communist
+			}
+			
+			traits = { communist_revolutionary }
+			
+			on_add = {
+				country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+		}
+		
 	}
 	# MISCOARY
 	army_chief = {

@@ -419,6 +419,22 @@ ideas = {
 				factor = 0
 			}
 		}
+		
+		ENG_william_smith = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = "ENG"
+			}			
+			available = {
+				has_completed_focus = ENG_internationalism
+			}
+			
+			traits = { prince_of_terror }
+			
+
+		}
 
 		ENG_philip_kerr = {
 			

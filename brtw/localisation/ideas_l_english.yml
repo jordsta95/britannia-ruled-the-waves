@@ -2443,9 +2443,12 @@ scottish_militarism:0 "Scottish Military Spending"
 scottish_militarism_desc:0 "By investing in the armed forces, we hope that more people will volunteer their services, even during peacetime."
 scottish_breakout:0 "Scotland is free!"
 scottish_breakout_desc:0 "Having been given a taste of what freedom could look like, our people will always fight to be free now, and forever more."
+scottish_nationalists:0 "Scottish Nationalists"
+scottish_nationalists_desc:0 "By reaching out to the hardline nationalists of our nation, we are able to recruit more citizens into the armed forces."
 ##England
 ENG_disjointed_government:0 "Government is a Shambles"
 ENG_disjointed_government_desc:0 "Since the end of the Great War the British Empire has collapsed, holding onto some territory, but not a lot of strategic value.\nThe government are struggling to deal with the threat of Germany, and the people are starting to worry.\nThe Union of Nations which make up the UK are unhappy with England's decisions, and fear the worst is yet to come."
 sense_of_militarism:0 "A Sense of Militarism"
 sense_of_militarism_desc:0 "Some citizens realize there's many threats out there at the minute, and voluntarily enlist themselves into the armed forces."
+ENG_william_smith:0 "William Smith"
 ##Wales

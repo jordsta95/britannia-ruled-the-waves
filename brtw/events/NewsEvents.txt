@@ -11003,3 +11003,114 @@ news_event = {
 		}
 	}
 }
+
+#USA becomes dominion of UK
+news_event = {
+	id = news.1179
+	title = news.1179.t
+	desc = news.1179.d
+	picture = GFX_news_event_scotland
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#England Response
+	option = {
+		name = news.1179.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	#USA response
+	option = {
+		name = news.1179.b
+		trigger = {
+			tag = USA
+		}
+	}
+
+	#Global Response
+	option = {
+		name = news.1179.c
+		trigger = {
+			NOT = {
+				tag = USA
+				tag = ENG
+			}
+		}
+	}
+}
+
+#USA rejects demand
+news_event = {
+	id = news.1180
+	title = news.1180.t
+	desc = news.1180.d
+	picture = GFX_news_event_scotland
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#England Response
+	option = {
+		name = news.1180.a
+		trigger = {
+			tag = ENG
+		}
+	}
+
+	#Scotland response
+	option = {
+		name = news.1180.b
+		trigger = {
+			tag = USA
+		}
+	}
+
+	#Global Response
+	option = {
+		name = news.1180.c
+		trigger = {
+			NOT = {
+				tag = USA
+				tag = ENG
+			}
+		}
+	}
+}
+
+#Maps changed
+news_event = {
+	id = news.1019
+	title = news.1019.t
+	desc = news.1019.d
+	picture = GFX_news_event_scotland
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#England Response
+	option = {
+		name = news.1019.a
+	}
+}
+#Maps not changed
+news_event = {
+	id = news.1020
+	title = news.1020.t
+	desc = news.1020.d
+	picture = GFX_news_event_scotland
+
+	major = yes
+
+	is_triggered_only = yes
+
+	#England Response
+	option = {
+		name = news.1020.a
+	}
+}
