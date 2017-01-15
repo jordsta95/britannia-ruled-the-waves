@@ -17,7 +17,7 @@ focus_tree = {
 		icon = GFX_goal_generic_demand_territory
 		x = 5
 		y = 0
-		cost = 10
+		cost = 1
 
 		available_if_capitulated = yes
 
@@ -33,7 +33,7 @@ focus_tree = {
 		mutually_exclusive = { focus = uk_colonial_focus }
 		x = 2
 		y = 1
-		cost = 10
+		cost = 1
 		
 		available_if_capitulated = yes
 
@@ -97,7 +97,7 @@ focus_tree = {
 		prerequisite = { focus = UK_tales_of_freedom }
 		x = 3
 		y = 2
-		cost = 10
+		cost = 1
 
 		available_if_capitulated = yes
 
@@ -107,7 +107,7 @@ focus_tree = {
 				limit = { has_dlc = "Together for Victory" }
 				set_autonomy = {
 					target = SCO
-					autonomous_state = autonomy_integrated_puppet
+					autonomous_state = autonomy_union_member
 					freedom_level = 0.5
 				}
 			}
@@ -120,7 +120,7 @@ focus_tree = {
 				limit = { has_dlc = "Together for Victory" }
 				set_autonomy = {
 					target = WAL
-					autonomous_state = autonomy_integrated_puppet
+					autonomous_state = autonomy_union_member
 					freedom_level = 0.5
 				}
 			}

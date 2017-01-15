@@ -1927,7 +1927,12 @@ scottish_nationalists:0 "Scottish Nationalists"
 scottish_nationalists_desc:0 "With a little bit of rallying, we can persuade nationalists within our nation to join the armed forces."
 scottish_faction:0 "A Faction of Our Own"
 scottish_faction_desc:0 "The allies need a faction that can really show them who's boss."
-
+scottish_CAS:0 "Close Air Support"
+scottish_CAS_desc:0 "Our boys on the ground could do with better planes to help them win the wars on the ground."
+scottish_armor_effort:0 "Fortress on Wheels"
+scottish_armor_effort_desc:0 "A bullet kills a man, but bounces off of armour. Creating better tanks could be the tactical advantage we would need in war."
+scottish_industrial_effort:0 "Fund R&D"
+scottish_industrial_effort_desc:0 "By funding industry R&D we will be able to do more at no extra cost."
 ##########England
 UK_pp:0 "Political Speeches"
 UK_pp_desc:0 "Our people have no hope in our politicians, if we can go out and have a few good speeches, we may get some approval from the masses."

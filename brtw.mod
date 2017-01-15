@@ -5,5 +5,6 @@ tags={
 	"Events"
 	"National Focuses"
 }
-supported_version="1.3.1"
 picture="thumbnail.jpg"
+remote_file_id="842491542"
+supported_version="1.3.1"

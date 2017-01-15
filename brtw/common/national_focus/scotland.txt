@@ -206,6 +206,30 @@ focus = {
 			}
 		}
 	}
+	
+focus = {
+		id = scottish_industrial_effort
+		icon = GFX_goal_generic_production
+		prerequisite = { focus = scottish_civ_factory_2 }
+		x = 0
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = industrial_bonus
+				bonus = 0.25
+				uses = 3
+				category = industry
+			}
+		}
+
+		ai_will_do = {
+			factor = 3
+		}
+	}
 
 focus = {
 		id = scottish_oil
@@ -1019,7 +1043,7 @@ focus = {
 	focus = {
 		id = scottish_equipment_effort
 		icon = GFX_goal_generic_small_arms
-		prerequisite = { focus = army_effort }
+		prerequisite = { focus = scottish_army_effort }
 		x = 19
 		y = 2
 		cost = 10
@@ -1097,6 +1121,25 @@ focus = {
 				technology = marines2
 				technology = tech_mountaineers
 				technology = tech_mountaineers2
+			}
+		}
+	}
+	focus = {
+		id = scottish_armor_effort
+		icon = GFX_goal_generic_army_tanks
+		prerequisite = { focus = scottish_motorization_effort }
+		x = 21
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = armor_bonus
+				bonus = 0.5
+				uses = 2
+				category = armor
 			}
 		}
 	}
@@ -1201,6 +1244,30 @@ focus = {
 			}
 		}
 	}
+	focus = {
+		id = scottish_CAS
+		prerequisite = { focus = scottish_fighters }
+		icon = GFX_goal_generic_air_fighter
+		x = 21
+		y = 2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = scottish_CAS
+				bonus = 0.33
+				uses = 2
+				category = cas_bomber
+			}
+		}
+	}
+	
 	##end
 }
 
