@@ -441,6 +441,23 @@ focus = {
 		}
 }
 focus = {
+		id = scottish_research_demo
+		icon = GFX_focus_research
+		prerequisite = { 
+		focus = scottish_irish_weapons
+		focus = scottish_british_weapons
+		}
+		x = 5
+		y = 6
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
+		}
+	}
+focus = {
 		id = scottish_fascist
 		icon = GFX_goal_support_fascism
 		prerequisite = { focus = scottish_authoritarian }
@@ -593,13 +610,31 @@ focus = {
 		focus = scottish_minimum_wage 
 		}
 		x = 9
-		y = 5
+		y = 4
 		cost = 10
 
 		available_if_capitulated = yes
 
 		completion_reward = {
 			set_rule = { can_create_factions = yes }
+		}
+	}
+	
+	focus = {
+		id = scottish_research_comminazi
+		icon = GFX_focus_research
+		prerequisite = { 
+		focus = scottish_nationalists 
+		focus = scottish_minimum_wage 
+		}
+		x = 9
+		y = 5
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_research_slot = 1
 		}
 	}
 	

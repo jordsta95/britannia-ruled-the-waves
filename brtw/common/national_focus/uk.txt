@@ -17,7 +17,7 @@ focus_tree = {
 		icon = GFX_goal_generic_demand_territory
 		x = 5
 		y = 0
-		cost = 1
+		cost = 10
 
 		available_if_capitulated = yes
 
@@ -33,7 +33,7 @@ focus_tree = {
 		mutually_exclusive = { focus = uk_colonial_focus }
 		x = 2
 		y = 1
-		cost = 1
+		cost = 10
 		
 		available_if_capitulated = yes
 
@@ -97,7 +97,7 @@ focus_tree = {
 		prerequisite = { focus = UK_tales_of_freedom }
 		x = 3
 		y = 2
-		cost = 1
+		cost = 10
 
 		available_if_capitulated = yes
 
@@ -344,7 +344,7 @@ focus_tree = {
 		icon = GFX_goal_generic_position_armies
 		available = { 
 			OR = {
-				threat > 0.25
+				threat > 0.15
 				has_war = yes
 			}
 		}
@@ -1098,9 +1098,6 @@ focus_tree = {
 		prerequisite = { focus = uk_australia_focus }
 		prerequisite = { focus = uk_new_zealand_focus }
 		prerequisite = { focus = uk_south_africa_focus }
-		available = {
-			
-		} 
 		icon = GFX_goal_generic_improve_relations
 		x = 8
 		y = 4
@@ -1115,6 +1112,7 @@ focus_tree = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					random_list = { 
 						50 = { 
+						add_ideas = ENG_colonial_integration
 							add_autonomy_ratio = { 
 								value = -0.2 
 								localization = UK_CAN_integration
@@ -1135,6 +1133,7 @@ focus_tree = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					random_list = { 
 						50 = { 
+						add_ideas = ENG_colonial_integration
 							add_autonomy_ratio = { 
 								value = -0.2 
 								localization = UK_AUS_integration
@@ -1155,6 +1154,7 @@ focus_tree = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					random_list = { 
 						50 = { 
+						add_ideas = ENG_colonial_integration
 							add_autonomy_ratio = { 
 								value = -0.2 
 								localization = UK_RAJ_integration
@@ -1175,6 +1175,7 @@ focus_tree = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					random_list = { 
 						50 = { 
+						add_ideas = ENG_colonial_integration
 							add_autonomy_ratio = { 
 								value = -0.2 
 								localization = UK_NZL_integration
@@ -1195,6 +1196,7 @@ focus_tree = {
 					add_opinion_modifier = { target = ENG modifier = democratic_leanings_good }
 					random_list = { 
 						50 = { 
+						add_ideas = ENG_colonial_integration
 							add_autonomy_ratio = { 
 								value = -0.2 
 								localization = UK_SAF_integration
@@ -1210,6 +1212,39 @@ focus_tree = {
 				}
 			}
 			remove_ideas = ENG_disjointed_government
+		}
+	}
+	focus = {
+		id = UK_repeal_s_o_w
+		prerequisite = { focus = UK_commonwealth_improvements }
+		x = 8
+		y = 5
+		cost = 10
+		icon = GFX_goal_tfv_strengthen_commonwealth_ties
+		available = {
+			AND = {
+				OR = {
+					CAN = { has_idea = ENG_colonial_integration }
+					SAF = { has_idea = ENG_colonial_integration }
+					AST = { has_idea = ENG_colonial_integration }
+					NZL = { has_idea = ENG_colonial_integration }
+					RAJ = { has_idea = ENG_colonial_integration }
+				}
+				OR = {
+					CAN = { has_idea = ENG_colonial_integration }
+					SAF = { has_idea = ENG_colonial_integration }
+					AST = { has_idea = ENG_colonial_integration }
+					NZL = { has_idea = ENG_colonial_integration }
+					RAJ = { has_idea = ENG_colonial_integration }
+				}
+			}
+		}
+		completion_reward = {
+					CAN = { add_ideas = ENG_repeal_s_o_w }
+					SAF = { add_ideas = ENG_repeal_s_o_w }
+					AST = { add_ideas = ENG_repeal_s_o_w }
+					NZL = { add_ideas = ENG_repeal_s_o_w }
+					RAJ = { add_ideas = ENG_repeal_s_o_w }
 		}
 	}
 	
@@ -2710,7 +2745,7 @@ focus = {
 		available = {
 			country_exists = SIA
 		}
-		x = 35
+		x = 34
 		y = 5
 		cost = 10
 

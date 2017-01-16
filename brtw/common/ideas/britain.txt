@@ -46,6 +46,26 @@ ideas = {
 			}
 		}
 		
+		ENG_rich_bitch = {
+			
+			allowed = {
+				original_tag = ENG
+				always = no
+			}
+			
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_agrarian_society
+			
+			modifier = {
+				monthly_population = 0.5
+			}
+		}
+		
 		ENG_disjointed_government = {
 			
 			allowed = {
@@ -64,6 +84,44 @@ ideas = {
 			modifier = {
 				political_power_cost = 0.75
 				unity_factor = -0.08
+			}
+		}
+		
+		ENG_colonial_integration = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				unity_factor = 0.1
+			}
+		}
+		
+		ENG_repeal_s_o_w = {
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_disjointed_gov
+			
+			modifier = {
+				autonomy_gain = -0.2
 			}
 		}
 

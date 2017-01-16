@@ -49,6 +49,7 @@ add_ideas = {
 	ENG_the_war_to_end_all_wars
 	george_v
 	ENG_disjointed_government
+	ENG_rich_bitch
 }
 
 set_convoys = 800
