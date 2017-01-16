@@ -1222,22 +1222,48 @@ focus_tree = {
 		cost = 10
 		icon = GFX_goal_tfv_strengthen_commonwealth_ties
 		available = {
-			AND = {
-				OR = {
-					CAN = { has_idea = ENG_colonial_integration }
-					SAF = { has_idea = ENG_colonial_integration }
-					AST = { has_idea = ENG_colonial_integration }
-					NZL = { has_idea = ENG_colonial_integration }
-					RAJ = { has_idea = ENG_colonial_integration }
-				}
-				OR = {
-					CAN = { has_idea = ENG_colonial_integration }
-					SAF = { has_idea = ENG_colonial_integration }
-					AST = { has_idea = ENG_colonial_integration }
-					NZL = { has_idea = ENG_colonial_integration }
-					RAJ = { has_idea = ENG_colonial_integration }
-				}
-			}
+			OR = {
+    AND = {
+        CAN = { has_idea = ENG_colonial_integration }
+        SAF = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        CAN = { has_idea = ENG_colonial_integration }
+        AST = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        CAN = { has_idea = ENG_colonial_integration }
+        RAJ = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        CAN = { has_idea = ENG_colonial_integration }
+        NZL = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        SAF = { has_idea = ENG_colonial_integration }
+        AST = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        SAF = { has_idea = ENG_colonial_integration }
+        RAJ = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        SAF = { has_idea = ENG_colonial_integration }
+        NZL = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        AST = { has_idea = ENG_colonial_integration }
+        RAJ = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        AST = { has_idea = ENG_colonial_integration }
+        NZL = { has_idea = ENG_colonial_integration }
+    }
+    AND = {
+        RAJ = { has_idea = ENG_colonial_integration }
+        NZL = { has_idea = ENG_colonial_integration }
+    }
+}
 		}
 		completion_reward = {
 					CAN = { add_ideas = ENG_repeal_s_o_w }

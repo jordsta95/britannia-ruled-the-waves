@@ -1269,7 +1269,7 @@ country_event = {
 	
 	trigger = {
 		AND = {
-            ENG = { has_war = yes }
+            threat > 0.25 
 			ENG = { has_idea = ENG_rich_bitch }
 		}
 	}
