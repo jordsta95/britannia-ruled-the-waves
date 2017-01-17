@@ -1,0 +1,30 @@
+﻿add_namespace = ireland
+
+# Join Axis
+country_event = {
+	id = ireland.1
+	title = ireland.1.t
+	desc = ireland.1.d
+	picture = GFX_news_event_scotland_england
+
+	is_triggered_only	= yes
+
+	option = {
+		name = ireland.1.a
+		add_to_faction = IRE
+	}
+}
+# Join Comintern
+country_event = {
+	id = ireland.2
+	title = ireland.2.t
+	desc = ireland.2.d
+	picture = GFX_news_event_scotland_england
+
+	is_triggered_only	= yes
+
+	option = {
+		name = ireland.2.a
+		add_to_faction = IRE
+	}
+}

@@ -1,0 +1,934 @@
+focus_tree = {
+	id = irish_focus
+	
+	country = {
+		factor = 0
+		
+		modifier = {
+			add = 10
+			tag = IRE
+		}
+	}
+	
+	default = no
+
+focus = {
+		id = ireland_pp
+		icon = GFX_goal_generic_demand_territory
+		x = 15
+		y = 0
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 100
+		}
+	}
+###Ireland First
+focus = {
+		id = ireland_first_factory
+		icon = GFX_goal_generic_construct_civ_factory
+		mutually_exclusive = { focus = ireland_big_britain_factory }
+		prerequisite = { focus = ireland_pp }
+		x = 14
+		y = 1
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		
+		ai_will_do = {
+			factor = 2
+		}
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+focus = {
+		id = ireland_authoritarian
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_first_factory }
+		available = {
+			AND = {
+				NOT = { 
+					is_in_faction_with = ENG
+				}
+			}
+		}
+		x = 12
+		y = 2
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_political_power = 50
+		}
+	}
+focus = {
+		id = ireland_fascist
+		icon = GFX_goal_support_fascism
+		prerequisite = { focus = ireland_authoritarian }
+		mutually_exclusive = { focus = ireland_communist }
+		x = 14
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_political_power = 25
+		custom_effect_tooltip = scottish_fascist_tt
+		}
+	}
+	
+	focus = {
+		id = ireland_nationalists
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_fascist }
+		x = 14
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_national_unity = 0.10
+		}
+	}
+	
+	focus = {
+		id = ireland_axis
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_nationalists }
+		mutually_exclusive = { focus = ireland_fascist_population }
+		x = 13
+		y = 5
+		cost = 10
+		
+		available = {
+			GER = { is_faction_leader = yes }
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			GER = {
+					country_event = { id = ireland.1 }
+				}
+		}
+	}
+	
+	focus = {
+		id = ireland_fascist_population
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_nationalists }
+		mutually_exclusive = { focus = ireland_axis }
+		x = 15
+		y = 5
+		cost = 10
+		
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ireland_fascists
+		}
+	}
+	
+	
+	
+focus = {
+		id = ireland_communist
+		icon = GFX_goal_support_communism
+		prerequisite = { focus = ireland_authoritarian }
+		mutually_exclusive = { focus = ireland_communist }
+		x = 10
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+		add_political_power = 25
+		custom_effect_tooltip = scottish_communist_tt
+		}
+	}
+	
+	focus = {
+		id = ireland_commintern
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_communist }
+		mutually_exclusive = { focus = ireland_communist_population }
+		x = 11
+		y = 5
+		cost = 10
+		
+		available = {
+			SOV = { is_faction_leader = yes }
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			SOV = {
+					country_event = { id = ireland.2 }
+				}
+		}
+	}
+	focus = {
+		id = ireland_communist_population
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_communist }
+		mutually_exclusive = { focus = ireland_commintern }
+		x = 9
+		y = 5
+		cost = 10
+		
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ireland_fascists
+		}
+	}
+	
+	focus = {
+		id = ireland_partisan
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_fascist_population  focus = ireland_communist_population  }
+		x = 12
+		y = 6
+		cost = 10
+		
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ireland_partisans
+		}
+	}
+	
+	#####End political
+	
+	###Navy - Left
+	focus = {
+		id = ireland_navy_l
+		icon = GFX_goal_generic_construct_naval_dockyard 
+		prerequisite = { focus = ireland_first_factory }
+		x = 8
+		y = 2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = naval_effort_tt
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = dockyard
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+			}
+		}
+
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = ireland_navy_l }
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 50
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = ireland_navy_l
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_coastal = yes
+					free_building_slots = {
+						building = dockyard
+						size > 0
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 2
+				add_building_construction = {
+					type = dockyard
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = ireland_navy_l
+			}
+		}
+	}
+	
+	focus = {
+		id = ireland_destroyer_l
+		prerequisite = { 
+			focus = ireland_navy_l
+		}
+		icon = GFX_goal_generic_navy_cruiser
+		x = 6
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = dd_bonus
+				bonus = 0.25
+				uses = 1
+				category = dd_tech
+			}
+			add_tech_bonus = {
+				name = uk_battleship_focus
+				bonus = 0.25
+				uses = 1
+				category = bb_tech
+			}
+		}
+	}
+	
+	focus = {
+		id = ireland_capital_ship_l
+		icon = GFX_goal_generic_navy_battleship
+		prerequisite = { focus = ireland_destroyer_l }
+		mutually_exclusive = { focus = ireland_cruiser_l }
+		x = 5
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			navy_experience = 5
+			add_tech_bonus = {
+				name = capital_ships_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = basic_battlecruiser
+				technology = basic_battleship
+				technology = improved_battleship
+				technology = advanced_battleship
+				technology = heavy_battleship
+				technology = heavy_battleship2
+				technology = early_carrier
+				technology = basic_carrier
+				technology = improved_carrier
+				technology = advanced_carrier
+			}
+		}
+	}
+	focus = {
+		id = ireland_cruiser_l
+		icon = GFX_goal_generic_navy_cruiser
+		prerequisite = { focus = ireland_destroyer_l }
+		mutually_exclusive = { focus = ireland_capital_ship_l }
+		x = 7
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		ai_will_do = {
+			factor = 1
+			modifier = {
+				factor = 0
+				all_owned_state = {
+					OR = {
+						is_coastal = no
+						dockyard < 1
+					}
+				}
+			}
+		}
+
+		completion_reward = {
+			add_tech_bonus = {
+				name = cr_bonus
+				bonus = 0.5
+				ahead_reduction = 1
+				uses = 1
+				technology = improved_light_cruiser
+				technology = advanced_light_cruiser
+				technology = improved_heavy_cruiser
+				technology = advanced_heavy_cruiser
+			}
+		}
+	}
+	
+	focus = {
+		id = ireland_submarine_l
+		icon = GFX_goal_generic_navy_submarine
+		prerequisite = { focus = ireland_navy_l }
+		x = 8
+		y = 3
+		cost = 10
+
+		available_if_capitulated = yes
+
+		complete_tooltip = {
+			navy_experience = 5
+			add_tech_bonus = {
+				name = GER_u_boat_effort
+				bonus = 0.5
+				uses = 1
+				technology = early_submarine
+				technology = basic_submarine
+				technology = improved_submarine
+				technology = advanced_submarine
+			}
+		}
+		
+		completion_reward = {
+			navy_experience = 5
+			add_tech_bonus = {
+				name = GER_u_boat_effort
+				bonus = 0.5
+				uses = 1
+				technology = early_submarine
+				technology = basic_submarine
+				technology = improved_submarine
+				technology = advanced_submarine
+			}
+		}
+	}
+##End Navy
+### Air left
+focus = {
+		id = ireland_air_start_l
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = {focus = ireland_first_factory}
+		x = 3
+		y = 2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = air_focus_bypass_tt
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = air_base
+							size > 1
+						}
+					}
+				}
+			}
+		}
+
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = ireland_air_start_l }
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}		
+			}
+		}
+
+		completion_reward = {
+			air_experience = 30
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = ireland_air_start_l
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = air_base
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = air_base
+					level = 2
+					instant_build = yes
+				}			
+				set_state_flag = ireland_air_start_l
+			}
+		}
+	}
+focus = {
+		id = ireland_anti_air_l
+		icon = GFX_goal_generic_air_doctrine
+		prerequisite = { focus = ireland_air_start_l }
+		mutually_exclusive = { focus = ireland_radar_l }
+		x = 2
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				NOT = {
+					any_owned_state = {
+						free_building_slots = {
+							building = anti_air
+							size > 1
+						}
+					}
+				}
+			}
+		}
+
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = ireland_anti_air_l }
+				add_building_construction = {
+					type = anti_air
+					level = 2
+					instant_build = yes
+				}		
+			}
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = anti_air
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = anti_air
+					level = 2
+					instant_build = yes
+				}
+				set_state_flag = ireland_anti_air_l
+			}
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = anti_air
+						size > 1
+					}
+					OR = {
+						region = 1
+						region = 2
+					}
+				}
+				add_building_construction = {
+					type = anti_air
+					level = 2
+					instant_build = yes
+				}			
+				set_state_flag = ireland_anti_air_l
+			}
+		}
+	}
+
+focus = {
+		id = ireland_radar_l
+		prerequisite = { focus = ireland_air_start_l }
+		mutually_exclusive = { focus = ireland_anti_air_l }
+		icon = GFX_goal_generic_radar
+		x = 4
+		y = 3
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 25
+			add_tech_bonus = {
+				name = radar_focus
+				bonus = 0.5
+				uses = 3
+				category = radar_tech
+			}
+		}
+	}
+focus = {
+		id = ireland_fighters_l
+		prerequisite = { focus = ireland_anti_air_l  focus = ireland_radar_l }
+		icon = GFX_goal_generic_air_fighter
+		x = 3
+		y = 4
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 10
+			add_tech_bonus = {
+				name = fighter_command_focus
+				bonus = 0.50
+				uses = 2
+				category = light_fighter
+			}
+		}
+	}
+focus = {
+		id = ireland_CAS_l
+		prerequisite = { focus = ireland_fighters_l }
+		mutually_exclusive = { focus = ireland_bomber_l }
+		icon = GFX_goal_generic_air_fighter
+		x = 2
+		y = 5
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 15
+			add_tech_bonus = {
+				name = ireland_CAS_l
+				bonus = 0.33
+				uses = 2
+				category = cas_bomber
+			}
+		}
+	}
+focus = {
+		id = ireland_bomber_l
+		prerequisite = { focus = ireland_fighters_l }
+		mutually_exclusive = { focus = ireland_CAS_l }
+		icon = GFX_goal_generic_air_fighter
+		x = 4
+		y = 5
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			air_experience = 15
+			add_tech_bonus = {
+				name = ireland_bomber_l
+				bonus = 0.33
+				uses = 2
+				category = naval_bomber
+			}
+		}
+	}	
+	##left air end
+	
+##Army
+focus = {
+		id = ireland_army_start_l
+		icon = GFX_goal_generic_construct_mil_factory
+		prerequisite = { focus = ireland_first_factory }
+		x = 1
+		y = 2
+		cost = 10
+		ai_will_do = {
+			factor = 1
+		}
+
+		continue_if_invalid = yes
+
+		bypass = {
+			custom_trigger_tooltip =  {
+				tooltip = production_effort_tt
+				NOT = {
+					any_owned_state = {
+						is_in_home_area = yes
+						free_building_slots = {
+							building = arms_factory
+							size > 1
+							include_locked = yes
+						}
+					}
+				}
+			}
+		}
+		complete_tooltip = {
+			every_state = {
+				limit = { has_state_flag = royal_ordinance_focus_2AF }
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+			}
+			
+		}
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+			random_owned_controlled_state = {
+				limit = {
+					is_in_home_area = yes
+					free_building_slots = {
+						building = arms_factory
+						size > 1
+						include_locked = yes
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = arms_factory
+					level = 1
+					instant_build = yes
+				}
+				set_state_flag = royal_ordinance_focus_2AF
+			}
+	}
+}
+
+focus = {
+		id = ireland_ira
+		icon = GFX_goal_generic_dangerous_deal
+		prerequisite = { focus = ireland_army_start_l }
+		x = 1
+		y = 4
+		cost = 10
+
+		available_if_capitulated = yes
+
+		completion_reward = {
+			add_ideas = ireland_ira
+		}
+	}	
+
+###The Big Bad Britain
+focus = {
+		id = ireland_big_britain_factory
+		icon = GFX_goal_generic_construct_civ_factory
+		prerequisite = { focus = ireland_pp }
+		mutually_exclusive = { focus = ireland_first_factory }
+		x = 16
+		y = 1
+		cost = 10
+
+		available_if_capitulated = yes
+
+
+		
+
+		bypass = {
+			custom_trigger_tooltip = {
+				tooltip = construction_effort_tt
+				all_owned_state = {
+					free_building_slots = {
+						building = industrial_complex
+						size < 1
+						include_locked = yes
+					}					
+				}
+			}
+		}
+
+		complete_tooltip = {
+			add_extra_state_shared_building_slots = 1
+			add_building_construction = {
+				type = industrial_complex
+				level = 1
+				instant_build = yes
+			}			
+		}
+
+		completion_reward = {
+			random_owned_controlled_state = {
+				limit = {
+					free_building_slots = {
+						building = industrial_complex
+						size > 0
+						include_locked = yes
+					}
+					OR = {
+						is_in_home_area = yes
+						NOT = {
+							owner = {
+								any_owned_state = {
+									free_building_slots = {
+										building = industrial_complex
+										size > 0
+										include_locked = yes
+									}
+									is_in_home_area = yes
+								}
+							}
+						}
+					}
+				}
+				add_extra_state_shared_building_slots = 1
+				add_building_construction = {
+					type = industrial_complex
+					level = 1
+					instant_build = yes
+				}
+			}
+		}
+	}
+	
+	##end
+}
+
