@@ -58,6 +58,25 @@ ideas = {
 				conscription = 0.01
 			}
 		}
+		ireland_volunteer_force = {
+			
+			
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+			
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+	
+			modifier = {
+				conscription = 0.02
+			}
+		}
 		ireland_partisans = {
 			
 			
@@ -81,6 +100,81 @@ ideas = {
 	}
 
 	political_advisor = {
+	
+	IRE_scott_andrews = {
+			
+			picture = generic_political_advisor_europe_3
+			
+			allowed = {
+				original_tag = "IRE"
+			}			
+			available = {
+				has_completed_focus = ireland_neutrality_focus
+			}
+			
+			traits = { democratic_reformer }
+			
+			on_add = {
+				country_event = political.13
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = democratic
+				}
+			}
+		
+		}
+		
+		IRE_andy_macdonald = {
+			
+			picture = generic_political_advisor_europe_1
+			
+			allowed = {
+				original_tag = "IRE"
+			}			
+			available = {
+				has_completed_focus = ireland_fascist
+			}
+			
+			traits = { fascist_demagogue }
+			
+			on_add = {
+				country_event = political.7
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = fascism
+				}
+			}
+		
+		}
+		
+		IRE_john_williams = {
+			
+			picture = generic_political_advisor_europe_2
+			
+			allowed = {
+				original_tag = "IRE"
+			}			
+			available = {
+				has_completed_focus = ireland_communist
+			}
+			
+			traits = { communist_revolutionary }
+			
+			on_add = {
+				country_event = political.1
+			}
+	
+			do_effect = {
+				NOT = {
+					has_government = communism
+				}
+			}
+
+		}
 
 		IRE_sean_lemass = {
 

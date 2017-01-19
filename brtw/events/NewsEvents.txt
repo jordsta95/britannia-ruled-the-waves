@@ -11114,3 +11114,19 @@ news_event = {
 		name = news.1020.a
 	}
 }
+
+#Ireland rejoins UK
+news_event = {
+	id = news.1021
+	title = news.1021.t
+	desc = news.1021.d
+	picture = GFX_news_053
+	
+	major = yes
+	
+	is_triggered_only = yes
+	
+	option = {
+		name = news.1021.a
+	}
+}

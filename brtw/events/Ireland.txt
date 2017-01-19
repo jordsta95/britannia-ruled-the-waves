@@ -28,3 +28,27 @@ country_event = {
 		add_to_faction = IRE
 	}
 }
+
+
+country_event = {
+	id = ireland.4
+	title = ireland.4.t
+	desc = ireland.4.d
+	picture = GFX_report_event_fascist_gathering
+
+	is_triggered_only = yes
+
+	option = {
+	name = ireland.4.a
+		ENG = {
+			set_autonomy = {
+				target = IRE
+				autonomous_state = autonomy_dominion
+				freedom_level = 0.5
+			}
+		}
+		IRE = { set_state_owner = 119 }
+		country_event = { days = 1 id = news.1021 }
+	}
+	
+}
